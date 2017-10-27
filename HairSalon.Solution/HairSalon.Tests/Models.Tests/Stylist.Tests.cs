@@ -24,5 +24,12 @@ namespace Salon.Models.Tests
       int result = Stylist.GetAll().Count;
       Assert.AreEqual(0, result);
     }
+    [TestMethod]
+    public void Equals_ReturnsTrueForSameName_Stylist()
+    {
+      Stylist firstStylist = new Stylist("Paul");
+      Stylist secondStylist = new Stylist("Paul");
+      Assert.AreEqual(firstStylist, secondStylist);
+    }
   }
 }
