@@ -41,5 +41,15 @@ namespace Salon.Models.Tests
 
       CollectionAssert.AreEqual(testList, result);
     }
+    [TestMethod]
+    public void Save_DatabaseAssignsIdToStylists_Id()
+    {
+      Stylist testStylist = new Stylist("Paul");
+      testStylist.Save();
+      Stylist savedStylist = Stylist.GetAll()[0];
+      int result = savedStylist.Id;
+      int testId = testStylist.Id;
+      Assert.AreEqual(testId, result);
+    }
   }
 }
