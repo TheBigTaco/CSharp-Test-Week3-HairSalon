@@ -11,9 +11,11 @@ else
   foreach(var customer in Model["customer"])
   {
     <p>@customer.Name</p>
-    <p><a href='/stylist/@Model["stylist"].Id/customer/update/@customer.Id'><small><small>Update Customer</small></small></a></p>
-    <p><a href='/stylist/@Model["stylist"].Id/customer/delete/@customer.Id'><small><small>Delete Customer</small></small></a></p>
+    <p class="waves-effect waves-light btn"><a href='/stylist/@Model["stylist"].Id/customer/update/@customer.Id'><small><small>Update Customer</small></small></a></p>
+    <p class="waves-effect waves-light btn"><a href='/stylist/@Model["stylist"].Id/customer/delete/@customer.Id'><small><small>Delete Customer</small></small></a></p>
   }
 }
-
-<p><a href='/stylist/@Model["stylist"].Id/customer'>Add a new customer</a></p>
+<br>
+<p class="waves-effect waves-light btn"><a href='/stylist/@Model["stylist"].Id/customer'>Add a new customer</a></p>
+<br>
+<p class="waves-effect waves-light btn"><a href="/">Go Back Home</a></p>

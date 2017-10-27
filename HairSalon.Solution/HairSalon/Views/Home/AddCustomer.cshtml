@@ -1,9 +1,10 @@
 @{
   Layout = "_Layout";
 }
+<h1>Add Customer</h1>
 <form action='/stylist/@Model["stylist"].Id/customer/new' method="post">
   <label for="customer-name">Customer Name</label>
   <input type="text" name="customer-name" id="customer-name">
   <input type="hidden" name="stylist-id" id="stylist-id" value='@Model["stylist"].Id'>
-  <button type="submit" name="button">Add</button>
+  <button class="waves-effect waves-light btn" type="submit" name="button">Add</button>
 </form>

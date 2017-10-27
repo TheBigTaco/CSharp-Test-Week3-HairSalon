@@ -11,6 +11,6 @@
 
 @foreach (var stylist in Model)
 {
-  <h3><a href="/stylist/@stylist.Id">@stylist.Name</a></h3>
+  <h3 id="stylists"><a href="/stylist/@stylist.Id">@stylist.Name</a></h3>
 }
-<h2><a href="/stylist">Add New Stylist</a></h2>
+<h2 class="waves-effect waves-light btn"><a href="/stylist">Add New Stylist</a></h2>
