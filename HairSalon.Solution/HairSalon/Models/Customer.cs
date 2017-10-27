@@ -122,6 +122,31 @@ namespace Salon.Models
       return newCustomer;
     }
 
+    public void UpdateCustomer(string name, int id)
+    {
+      MySqlConnection conn = DB.Connection();
+      conn.Open();
+      var cmd = conn.CreateCommand() as MySqlCommand;
+      cmd.CommandText = @"UPDATE customers SET name = @newName WHERE id = @searchId;";
+
+      MySqlParameter searchId = new MySqlParameter();
+      searchId.ParameterName = "@searchId";
+      searchId.Value = id;
+      cmd.Parameters.Add(searchId);
+
+      MySqlParameter newName = new MySqlParameter();
+      newName.ParameterName = "@newName";
+      newName.Value = name;
+      cmd.Parameters.Add(newName);
+
+      var rdr = cmd.ExecuteNonQuery();
+      conn.Close();
+      if(conn != null)
+      {
+        conn.Dispose();
+      }
+    }
+
     public static void DeleteAll()
     {
       MySqlConnection conn = DB.Connection();

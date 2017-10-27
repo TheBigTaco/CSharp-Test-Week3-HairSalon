@@ -97,5 +97,14 @@ namespace Salon.Models.Tests
 
       CollectionAssert.AreEqual(testCustomerList, resultCustomerList);
     }
+    [TestMethod]
+    public void UpdateCustomer_UpdateCustomerInDatabase_Customer()
+    {
+      Customer firstCustomer = new Customer("Adam", 3);
+      firstCustomer.Save();
+      firstCustomer.UpdateCustomer("Adam Titus", firstCustomer.Id);
+      Customer testCustomer = Customer.GetAll()[0];
+      Assert.AreEqual("Adam Titus", testCustomer.Name);
+    }
   }
 }
