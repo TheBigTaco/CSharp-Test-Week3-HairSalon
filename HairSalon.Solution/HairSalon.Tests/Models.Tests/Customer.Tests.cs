@@ -33,10 +33,16 @@ namespace Salon.Models.Tests
 
       Assert.AreEqual(firstCustomer, secondCustomer);
     }
-    // [TestMethod]
-    // public void Save_SaveCustomerToDatavase_CustomerList()
-    // {
-    //
-    // }
+    [TestMethod]
+    public void Save_SaveCustomerToDatavase_CustomerList()
+    {
+      Customer firstCustomer = new Customer("Adam", 1);
+      firstCustomer.Save();
+
+      List<Customer> result = Customer.GetAll();
+      List<Customer> testList = new List<Customer> {firstCustomer};
+
+      CollectionAssert.AreEqual(testList, result);
+    }
   }
 }
