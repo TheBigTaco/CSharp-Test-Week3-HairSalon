@@ -67,5 +67,20 @@ namespace Salon.Models.Tests
 
       Assert.AreEqual(firstCustomer, foundCustomer);
     }
+    [TestMethod]
+    public void GetCustomers_RetrievesAllCustomersWithStylists_CustomerList()
+    {
+      Stylist testStylist = new Stylist("Paul");
+      testStylist.Save();
+      Customer firstCustomer = new Customer("Adam", testStylist.Id);
+      Customer secondCustomer = new Customer ("Lisa", testStylist.Id);
+      firstCustomer.Save();
+      secondCustomer.Save();
+
+      List<Customer> testCustomerList = new List<Customer> {firstCustomer, secondCustomer};
+      List<Customer> resultCustomerList = testStylist.GetCustomers();
+
+      CollectionAssert.AreEqual(testCustomerList, resultCustomerList);
+    }
   }
 }
