@@ -13,6 +13,7 @@ namespace Salon.Models.Tests
     public void Dispose()
     {
       Stylist.DeleteAll();
+      Customer.DeleteAll();
     }
     public StylistTests()
     {

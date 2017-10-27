@@ -111,6 +111,35 @@ namespace Salon.Models
       return foundStylist;
     }
 
+    public List<Customer> GetCustomers()
+    {
+      List<Customer> allStylistCustomers = new List<Customer> {};
+      MySqlConnection conn = DB.Connection();
+      conn.Open();
+      var cmd = conn.CreateCommand() as MySqlCommand;
+      cmd.CommandText = @"SELECT * FROM customers WHERE stylist_id = @stylist_id ORDER BY name;";
+
+      MySqlParameter stylistId = new MySqlParameter();
+      stylistId.ParameterName = "@stylist_id";
+      stylistId.Value = this.Id;
+      cmd.Parameters.Add(stylistId);
+      var rdr = cmd.ExecuteReader() as MySqlDataReader;
+      while(rdr.Read())
+      {
+        string customerName = rdr.GetString(1);
+        int customerStylistId = rdr.GetInt32(2);
+        int customerId = rdr.GetInt32(0);
+        Customer newCustomer = new Customer(customerName, customerStylistId, customerId);
+        allStylistCustomers.Add(newCustomer);
+      }
+      conn.Close();
+      if (conn != null)
+      {
+        conn.Dispose();
+      }
+      return allStylistCustomers;
+    }
+
     public static void DeleteAll()
     {
       MySqlConnection conn = DB.Connection();
