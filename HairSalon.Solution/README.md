@@ -1,4 +1,4 @@
-# Rename
+# Salon
 ##### by Adam Titus
 
 ### Description

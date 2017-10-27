@@ -2,16 +2,17 @@ using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Rename.Models;
+using Salon.Models;
+using MySql.Data.MySqlClient;
 
-namespace Rename.Models.Tests
+namespace Salon.Models.Tests
 {
-  [TestClass]
-  public class ClassTests : IDisposable
+  [TestStylist]
+  public class StylistTests : IDisposable
   {
     public void Dispose()
     {
-      Class.ClearAll
+      Stylist.ClearAll
     }
     [TestMethod]
     public void Method_Description_ExpectedValue()

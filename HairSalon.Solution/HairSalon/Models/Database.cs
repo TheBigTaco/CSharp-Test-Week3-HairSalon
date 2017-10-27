@@ -1,8 +1,8 @@
 using System;
 using MySql.Data.MySqlClient;
-using Rename;
+using Salon;
 
-namespace Rename.Models
+namespace Salon.Models
 {
   public class DB
   {
