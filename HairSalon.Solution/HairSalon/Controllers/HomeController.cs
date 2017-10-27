@@ -53,5 +53,29 @@ namespace Salon.Controllers
         newCustomer.Save();
         return Redirect("/stylist/" + stylistId);
       }
+      [HttpGet("/stylist/{sid}/customer/delete/{cid}")]
+      public ActionResult Delete(int sid, int cid)
+      {
+        Customer.DeleteCustomer(cid);
+        return Redirect("/stylist/"+sid);
+      }
+      [HttpGet("/stylist/{sid}/customer/update/{cid}")]
+      public ActionResult Update(int sid, int cid)
+      {
+        Dictionary<string, object> model = new Dictionary<string, object>();
+        Stylist selectedStylist = Stylist.Find(sid);
+        Customer selectedCustomer = Customer.Find(cid);
+        model.Add("stylist", selectedStylist);
+        model.Add("customer", selectedCustomer);
+        return View(model);
+      }
+      [HttpPost("/stylist/{id}/customer/update")]
+      public ActionResult UpdateProccess(int id)
+      {
+        int customerId = int.Parse(Request.Form["customer-id"]);
+        Customer updatedCustomer = Customer.Find(customerId);
+        updatedCustomer.UpdateCustomer(Request.Form["new-name"], customerId);
+        return Redirect("/stylist/"+id);
+      }
     }
 }

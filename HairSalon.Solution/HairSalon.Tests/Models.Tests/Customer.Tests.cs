@@ -113,7 +113,7 @@ namespace Salon.Models.Tests
       Customer secondCustomer = new Customer ("Lisa", 3);
       secondCustomer.Save();
       firstCustomer.Save();
-      secondCustomer.DeleteCustomer(secondCustomer.Id);
+      Customer.DeleteCustomer(secondCustomer.Id);
 
       List<Customer> testCustomerList = new List<Customer> {firstCustomer};
       List<Customer> resultCustomerList = Customer.GetAll();

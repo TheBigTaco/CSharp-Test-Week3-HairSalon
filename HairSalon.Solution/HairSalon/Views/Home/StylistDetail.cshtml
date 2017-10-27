@@ -11,6 +11,8 @@ else
   foreach(var customer in Model["customer"])
   {
     <p>@customer.Name</p>
+    <p><a href='/stylist/@Model["stylist"].Id/customer/update/@customer.Id'><small><small>Update Customer</small></small></a></p>
+    <p><a href='/stylist/@Model["stylist"].Id/customer/delete/@customer.Id'><small><small>Delete Customer</small></small></a></p>
   }
 }
 

@@ -1,0 +1,10 @@
+@{
+  Layout = "_Layout";
+}
+<h1>Change the name of @Model["customer"].Name</h1>
+<form action='/stylist/@Model["stylist"].Id/customer/update' method="post">
+  <label for="new-name">Name Change</label>
+  <input type="text" name="new-name" id="new-name">
+  <input type="hidden" name="customer-id" id="customer-id" value='@Model["customer"].Id'>
+  <button type="submit" name="button">Submit</button>
+</form>

@@ -146,7 +146,7 @@ namespace Salon.Models
         conn.Dispose();
       }
     }
-    public void DeleteCustomer(int id)
+    public static void DeleteCustomer(int id)
     {
       MySqlConnection conn = DB.Connection();
       conn.Open();
