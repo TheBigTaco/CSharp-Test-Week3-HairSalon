@@ -57,5 +57,15 @@ namespace Salon.Models.Tests
 
       Assert.AreEqual(testId, result);
     }
+    [TestMethod]
+    public void Find_FindsCustomerInDatabase_Customer()
+    {
+      Customer firstCustomer = new Customer("Adam", 1);
+      firstCustomer.Save();
+
+      Customer foundCustomer = Customer.Find(firstCustomer.Id);
+
+      Assert.AreEqual(firstCustomer, foundCustomer);
+    }
   }
 }
