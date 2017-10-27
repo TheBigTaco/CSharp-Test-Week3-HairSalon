@@ -106,5 +106,19 @@ namespace Salon.Models.Tests
       Customer testCustomer = Customer.GetAll()[0];
       Assert.AreEqual("Adam Titus", testCustomer.Name);
     }
+    [TestMethod]
+    public void DeleteCustomer_DeleteCustomerFromDatabase_CustomerList()
+    {
+      Customer firstCustomer = new Customer("Adam", 3);
+      Customer secondCustomer = new Customer ("Lisa", 3);
+      secondCustomer.Save();
+      firstCustomer.Save();
+      secondCustomer.DeleteCustomer(secondCustomer.Id);
+
+      List<Customer> testCustomerList = new List<Customer> {firstCustomer};
+      List<Customer> resultCustomerList = Customer.GetAll();
+
+      CollectionAssert.AreEqual(testCustomerList, resultCustomerList);
+    }
   }
 }
