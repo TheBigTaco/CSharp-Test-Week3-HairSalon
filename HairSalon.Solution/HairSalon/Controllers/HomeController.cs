@@ -10,7 +10,8 @@ namespace Salon.Controllers
       [HttpGet("/")]
       public ActionResult Index()
       {
-        return View();
+        List<Stylist> stylists = Stylist.GetAll();
+        return View(stylists);
       }
     }
 }
