@@ -25,5 +25,18 @@ namespace Salon.Models.Tests
       int result = Customer.GetAll().Count;
       Assert.AreEqual(0, result);
     }
+    [TestMethod]
+    public void Equals_OverrideTrueForSameParameters_Customer()
+    {
+      Customer firstCustomer = new Customer("Adam", 1);
+      Customer secondCustomer = new Customer("Adam", 1);
+
+      Assert.AreEqual(firstCustomer, secondCustomer);
+    }
+    // [TestMethod]
+    // public void Save_SaveCustomerToDatavase_CustomerList()
+    // {
+    //
+    // }
   }
 }
