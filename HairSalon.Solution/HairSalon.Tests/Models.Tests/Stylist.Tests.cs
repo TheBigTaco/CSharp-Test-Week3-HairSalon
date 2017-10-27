@@ -7,17 +7,22 @@ using MySql.Data.MySqlClient;
 
 namespace Salon.Models.Tests
 {
-  [TestStylist]
+  [TestClass]
   public class StylistTests : IDisposable
   {
     public void Dispose()
     {
-      Stylist.ClearAll
+      Stylist.DeleteAll();
+    }
+    public StylistTests()
+    {
+      DBConfiguration.ConnectionString = "server=localhost;user id=root;password=root;port=8889;database=adam_titus_tests;";
     }
     [TestMethod]
-    public void Method_Description_ExpectedValue()
+    public void GetAll_StylistsEmptyAtFirst_0()
     {
-      Assert.AreEqual(var1, method(input));
+      int result = Stylist.GetAll().Count;
+      Assert.AreEqual(0, result);
     }
   }
 }
