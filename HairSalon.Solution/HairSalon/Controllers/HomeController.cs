@@ -35,6 +35,23 @@ namespace Salon.Controllers
         model.Add("customer", stylistCustomers);
         return View(model);
       }
-
+      [HttpGet("/stylist/{id}/customer")]
+      public ActionResult AddCustomer(int id)
+      {
+        Dictionary<string, object> model = new Dictionary<string, object>();
+        Stylist selectedStylist = Stylist.Find(id);
+        List<Customer> stylistCustomers = selectedStylist.GetCustomers();
+        model.Add("stylist", selectedStylist);
+        model.Add("customer", stylistCustomers);
+        return View(model);
+      }
+      [HttpPost("/stylist/{id}/customer/new")]
+      public ActionResult NewCustomer(int id)
+      {
+        int stylistId = int.Parse(Request.Form["stylist-id"]);
+        Customer newCustomer = new Customer(Request.Form["customer-name"], stylistId);
+        newCustomer.Save();
+        return Redirect("/stylist/" + stylistId);
+      }
     }
 }
