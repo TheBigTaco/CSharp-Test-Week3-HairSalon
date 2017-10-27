@@ -31,5 +31,15 @@ namespace Salon.Models.Tests
       Stylist secondStylist = new Stylist("Paul");
       Assert.AreEqual(firstStylist, secondStylist);
     }
+    [TestMethod]
+    public void Save_SavesStylistToDatabase_StylistList()
+    {
+      Stylist testStylist = new Stylist("Paul");
+      testStylist.Save();
+      List<Stylist> result = Stylist.GetAll();
+      List<Stylist> testList = new List<Stylist>{testStylist};
+
+      CollectionAssert.AreEqual(testList, result);
+    }
   }
 }
