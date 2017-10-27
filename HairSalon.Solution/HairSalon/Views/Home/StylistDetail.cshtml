@@ -1,0 +1,17 @@
+@{
+  Layout = "_Layout";
+}
+<h1>Customers for @Model["stylist"].Name</h1>
+@if(Model["customer"].Count == 0)
+{
+  <h3>There are no customers for @Model["stylist"].Name yet.</h3>
+}
+else
+{
+  foreach(var customer in Model["customer"])
+  {
+    <p>@customer.Name</p>
+  }
+}
+
+<p><a href="/stylist/{id}/customer">Add a new customer</a></p>

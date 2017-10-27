@@ -25,5 +25,16 @@ namespace Salon.Controllers
         newStylist.Save();
         return Redirect("/");
       }
+      [HttpGet("/stylist/{id}")]
+      public ActionResult StylistDetail(int id)
+      {
+        Dictionary<string, object> model = new Dictionary<string, object>();
+        Stylist selectedStylist = Stylist.Find(id);
+        List<Customer> stylistCustomers = selectedStylist.GetCustomers();
+        model.Add("stylist", selectedStylist);
+        model.Add("customer", stylistCustomers);
+        return View(model);
+      }
+
     }
 }
