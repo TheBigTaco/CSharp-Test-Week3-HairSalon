@@ -34,7 +34,7 @@ namespace Salon.Models.Tests
       Assert.AreEqual(firstCustomer, secondCustomer);
     }
     [TestMethod]
-    public void Save_SaveCustomerToDatavase_CustomerList()
+    public void Save_SaveCustomerToDatabase_CustomerList()
     {
       Customer firstCustomer = new Customer("Adam", 1);
       firstCustomer.Save();
@@ -43,6 +43,19 @@ namespace Salon.Models.Tests
       List<Customer> testList = new List<Customer> {firstCustomer};
 
       CollectionAssert.AreEqual(testList, result);
+    }
+    [TestMethod]
+    public void Save_DatabaseAssignsIdToObject_Id()
+    {
+      Customer firstCustomer = new Customer("Adam", 1);
+      firstCustomer.Save();
+
+      Customer savedCustomer = Customer.GetAll()[0];
+
+      int result = savedCustomer.Id;
+      int testId = firstCustomer.Id;
+
+      Assert.AreEqual(testId, result);
     }
   }
 }
